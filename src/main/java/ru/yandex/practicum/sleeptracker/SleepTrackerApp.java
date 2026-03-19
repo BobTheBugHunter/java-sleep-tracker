@@ -1,32 +1,45 @@
 package ru.yandex.practicum.sleeptracker;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import Calculation.Functions.CounterOfSessions;
+import com.sun.tools.javac.Main;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class SleepTrackerApp {
 
-    private static final List<SleepingSession> logFromFile = new ArrayList<>();
-    private static final List<Functional> functions = new ArrayList<>();
+    private static final List<SleepingSession> sleepingSessions = new ArrayList<>();
+    private static final List<Function> functions = new ArrayList<>();
 
     public static void main(String[] args) {
 
         readFile("sleep_log.txt");
-
+        functions.add(new CounterOfSessions());
+        System.out.println(functions.getFirst().apply(sleepingSessions));
     }
 
     public static void readFile(String fileName) {
-        try(BufferedReader br = new BufferedReader((new FileReader(fileName)))) {
+        try (InputStream is = Main.class.getClassLoader()
+                .getResourceAsStream(fileName);
+             BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
 
+            if (is == null) {
+                System.out.println("Файл не найден: " + fileName);
+                return;
+            }
+
+            System.out.println("Файл найден");
             String line;
             while ((line = br.readLine()) != null) {
-                logFromFile.add(new  SleepingSession(line));
+                sleepingSessions.add(new SleepingSession(line));
             }
+
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Ошибка чтения: " + e.getMessage());
+        } catch (NullPointerException e) {
+            System.out.println("Файл не найден: " + fileName);
         }
     }
 }
