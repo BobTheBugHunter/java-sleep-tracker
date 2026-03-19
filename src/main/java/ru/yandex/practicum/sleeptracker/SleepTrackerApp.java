@@ -1,6 +1,6 @@
 package ru.yandex.practicum.sleeptracker;
 
-import Calculation.Functions.CounterOfSessions;
+import Calculation.Functions.*;
 import com.sun.tools.javac.Main;
 
 import java.io.*;
@@ -17,7 +17,15 @@ public class SleepTrackerApp {
 
         readFile("sleep_log.txt");
         functions.add(new CounterOfSessions());
+        functions.add(new MinimumSession());
+        functions.add(new MaximumSession());
+        functions.add(new AverageSession());
+        functions.add(new CounterBadSessions());
         System.out.println(functions.getFirst().apply(sleepingSessions));
+        System.out.println(functions.get(1).apply(sleepingSessions));
+        System.out.println(functions.get(2).apply(sleepingSessions));
+        System.out.println(functions.get(3).apply(sleepingSessions));
+        System.out.println(functions.get(4).apply(sleepingSessions));
     }
 
     public static void readFile(String fileName) {
