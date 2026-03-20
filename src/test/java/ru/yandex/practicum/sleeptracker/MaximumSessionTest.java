@@ -10,6 +10,7 @@ import java.util.List;
 
 public class MaximumSessionTest {
     private MaximumSession maximumSession;
+
     @BeforeEach
     public void setUp() {
         maximumSession = new MaximumSession();

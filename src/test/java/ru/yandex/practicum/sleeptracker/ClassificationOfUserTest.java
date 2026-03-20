@@ -14,6 +14,7 @@ import java.util.List;
 
 public class ClassificationOfUserTest {
     private ClassificationOfUser classificationOfUser;
+
     @BeforeEach
     public void setUp() {
         classificationOfUser = new ClassificationOfUser();

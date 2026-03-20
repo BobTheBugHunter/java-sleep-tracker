@@ -10,6 +10,7 @@ import java.util.List;
 
 public class AverageSessionTest {
     private AverageSession average;
+
     @BeforeEach
     public void setUp() {
         average = new AverageSession();

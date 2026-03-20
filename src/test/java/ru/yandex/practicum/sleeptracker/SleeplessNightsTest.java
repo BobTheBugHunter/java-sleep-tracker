@@ -10,6 +10,7 @@ import java.util.List;
 
 public class SleeplessNightsTest {
     private SleeplessNights sleeplessNights;
+
     @BeforeEach
     public void setUp() {
         sleeplessNights = new SleeplessNights();

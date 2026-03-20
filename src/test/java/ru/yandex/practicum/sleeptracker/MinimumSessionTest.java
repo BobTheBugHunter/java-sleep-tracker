@@ -10,6 +10,7 @@ import java.util.List;
 
 public class MinimumSessionTest {
     private MinimumSession minimumSession;
+
     @BeforeEach
     public void setUp() {
         minimumSession = new MinimumSession();
