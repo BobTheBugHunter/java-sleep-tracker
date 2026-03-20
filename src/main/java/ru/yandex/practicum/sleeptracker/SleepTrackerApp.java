@@ -1,7 +1,6 @@
 package ru.yandex.practicum.sleeptracker;
 
-import Calculation.Functions.*;
-import Classifications.ClassificationOfUser;
+import classifications.ClassificationOfUser;
 import com.sun.tools.javac.Main;
 
 import java.io.*;

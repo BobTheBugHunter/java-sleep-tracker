@@ -1,4 +1,4 @@
-package Calculation.Functions;
+package only.calculation.functions;
 
 import ru.yandex.practicum.sleeptracker.SleepingSession;
 

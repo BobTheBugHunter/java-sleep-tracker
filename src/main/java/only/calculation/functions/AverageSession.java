@@ -1,4 +1,4 @@
-package Calculation.Functions;
+package only.calculation.functions;
 
 import ru.yandex.practicum.sleeptracker.SleepingSession;
 
@@ -12,18 +12,13 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class MaximumSession implements Function<List<SleepingSession>, Long> {
+public class AverageSession implements Function<List<SleepingSession>, Long> {
     private final List<Duration> durations = new ArrayList<>();
-
     @Override
     public Long apply(List<SleepingSession> sleepingSessions) {
 
         if (sleepingSessions.isEmpty()) {
-            if (durations.isEmpty()) {
-                return -999L;
-            }
-            Optional<Duration> maxDuration = durations.stream().max(Duration::compareTo);
-            return maxDuration.get().toMinutes();
+            return (durations.stream().mapToLong(Duration::toMinutes).sum()) / durations.size();
         }
 
         DateTimeFormatter dateTimeFormatter  = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");

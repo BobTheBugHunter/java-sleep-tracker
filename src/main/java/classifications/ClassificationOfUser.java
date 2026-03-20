@@ -1,9 +1,9 @@
-package Classifications;
+package classifications;
 
-import TypesOfUser.Lark;
-import TypesOfUser.Owl;
-import TypesOfUser.Pigeon;
-import TypesOfUser.UserType;
+import types.of.users.Lark;
+import types.of.users.Owl;
+import types.of.users.Pigeon;
+import types.of.users.UserType;
 import ru.yandex.practicum.sleeptracker.SleepingSession;
 
 import java.time.LocalDateTime;

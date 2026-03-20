@@ -1,11 +1,10 @@
 package ru.yandex.practicum.sleeptracker;
 
-import Calculation.Functions.CounterBadSessions;
-import Classifications.ClassificationOfUser;
-import TypesOfUser.Lark;
-import TypesOfUser.Owl;
-import TypesOfUser.Pigeon;
-import TypesOfUser.UserType;
+import classifications.ClassificationOfUser;
+import types.of.users.Lark;
+import types.of.users.Owl;
+import types.of.users.Pigeon;
+import types.of.users.UserType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

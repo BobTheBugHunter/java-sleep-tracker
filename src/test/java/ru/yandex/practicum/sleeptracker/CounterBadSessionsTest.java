@@ -1,6 +1,6 @@
 package ru.yandex.practicum.sleeptracker;
 
-import Calculation.Functions.CounterBadSessions;
+import only.calculation.functions.CounterBadSessions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package TypesOfUser;
+package types.of.users;
 
 public class UserType {
     private String getDescription;

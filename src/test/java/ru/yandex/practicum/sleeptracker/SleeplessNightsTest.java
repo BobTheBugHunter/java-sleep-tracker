@@ -1,7 +1,6 @@
 package ru.yandex.practicum.sleeptracker;
 
-import Calculation.Functions.MinimumSession;
-import Calculation.Functions.SleeplessNights;
+import only.calculation.functions.SleeplessNights;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package TypesOfUser;
+package types.of.users;
 
 public class Pigeon extends UserType{
     @Override
