@@ -11,12 +11,11 @@ import java.util.stream.Collectors;
 
 public class MinimumSession implements Function<List<SleepingSession>, Long> {
     private final List<Duration> durations = new ArrayList<>();
-    private final int END_OF_SESSIONS = 2;
 
     @Override
     public Long apply(List<SleepingSession> sleepingSessions) {
 
-        if (sleepingSessions.size() < END_OF_SESSIONS) {
+        if (sleepingSessions.isEmpty()) {
             Optional<Duration> minDuration = durations.stream().min(Duration::compareTo);
             return minDuration.get().toMinutes();
         }

@@ -2,9 +2,6 @@ package Calculation.Functions;
 
 import ru.yandex.practicum.sleeptracker.SleepingSession;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,12 +10,11 @@ import java.util.stream.Collectors;
 
 public class CounterBadSessions implements Function<List<SleepingSession>, Integer> {
     private final List<String> grades = new ArrayList<>();
-    private final int END_OF_SESSIONS = 2;
 
     @Override
     public Integer apply(List<SleepingSession> sleepingSessions) {
 
-        if (sleepingSessions.size() < END_OF_SESSIONS) {
+        if (sleepingSessions.isEmpty()) {
             return grades.size();
         }
 

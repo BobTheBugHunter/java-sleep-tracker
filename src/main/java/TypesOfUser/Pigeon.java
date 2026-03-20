@@ -5,4 +5,13 @@ public class Pigeon extends UserType{
     public String getGetDescription() {
         return "Вы являетесь голубем!";
     }
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Pigeon;
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

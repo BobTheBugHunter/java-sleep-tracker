@@ -33,18 +33,15 @@ public class SleeplessNights implements Function<List<SleepingSession>, Integer>
         LocalDateTime secondSessionTime = LocalDateTime.parse(secondSession, dateTimeFormatter);
         long hourOfFirstSession = firstSessionTime.getHour();
         if (firstSessionTime.getDayOfYear() == secondSessionTime.getDayOfYear()) {
-            if (hourOfFirstSession > INTERVAL) {
+            if (hourOfFirstSession >= INTERVAL) {
                 sleeplessSessions.put(firstSessionTime, secondSessionTime);
-                System.out.println("Бессонная ночь!" + firstSessionTime.toString() + "\n" + "время проснутия" +
-                        secondSessionTime.toString());
-            } else {
-                System.out.println("Ночь хорошая!"  + firstSessionTime.toString() + "\n" + "время проснутия" +
-                        secondSessionTime.toString());
+                //System.out.println("Бессонная ночь!" + firstSessionTime.toString() + "\n" + "время проснутия" + secondSessionTime.toString());
             }
-        } else {
-            System.out.println("Ночь сонная!!!"  + firstSessionTime.toString() + "\n" + "время проснутия" +
-                    secondSessionTime.toString());
         }
+//        else {
+//            System.out.println("Ночь сонная!!!"  + firstSessionTime.toString() + "\n" + "время проснутия" +
+//                    secondSessionTime.toString());
+//        }
 
 
         return apply(sleepingSessions.subList(1, sleepingSessions.size()));

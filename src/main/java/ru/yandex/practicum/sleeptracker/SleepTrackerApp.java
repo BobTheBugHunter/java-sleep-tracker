@@ -24,13 +24,14 @@ public class SleepTrackerApp {
         functions.add(new CounterBadSessions());
         functions.add(new SleeplessNights());
         functions.add(new ClassificationOfUser());
-        System.out.println(functions.getFirst().apply(sleepingSessions));
-        System.out.println(functions.get(1).apply(sleepingSessions));
-        System.out.println(functions.get(2).apply(sleepingSessions));
-        System.out.println(functions.get(3).apply(sleepingSessions));
-        System.out.println(functions.get(4).apply(sleepingSessions));
-        System.out.println(functions.get(5).apply(sleepingSessions));
-        System.out.println(functions.get(6).apply(sleepingSessions));
+        System.out.printf("Количество ваших сессий сна: %d%n", functions.getFirst().apply(sleepingSessions));
+        System.out.printf("Минимальная сессия сна: %d минут%n", functions.get(1).apply(sleepingSessions));
+        System.out.printf("Максимальная сессия сна: %d минут%n", functions.get(2).apply(sleepingSessions));
+        System.out.printf("Средняя продолжительность сессии: %d минут%n", functions.get(3).apply(sleepingSessions));
+        System.out.printf("Количество плохих сессий сна: %d%n", functions.get(4).apply(sleepingSessions));
+        System.out.printf("Количество бессонных ночей: %d%n", functions.get(5).apply(sleepingSessions));
+        System.out.print("Определение вашего хронотипа: ");
+        functions.get(6).apply(sleepingSessions);
     }
 
     public static void readFile(String fileName) {

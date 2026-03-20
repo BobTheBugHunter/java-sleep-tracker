@@ -14,12 +14,14 @@ import java.util.stream.Collectors;
 
 public class MaximumSession implements Function<List<SleepingSession>, Long> {
     private final List<Duration> durations = new ArrayList<>();
-    private final int END_OF_SESSIONS = 2;
 
     @Override
     public Long apply(List<SleepingSession> sleepingSessions) {
 
-        if (sleepingSessions.size() < END_OF_SESSIONS) {
+        if (sleepingSessions.isEmpty()) {
+            if (durations.isEmpty()) {
+                return -999L;
+            }
             Optional<Duration> maxDuration = durations.stream().max(Duration::compareTo);
             return maxDuration.get().toMinutes();
         }

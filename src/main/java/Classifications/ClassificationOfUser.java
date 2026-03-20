@@ -19,6 +19,12 @@ public class ClassificationOfUser implements Function<List<SleepingSession>, Use
     private final List<Lark> lark = new ArrayList<>();
     private final List<Pigeon> pigeon = new ArrayList<>();
 
+    private final int SLEEP_AT_NIGHT = 6;
+    private final int WAKE_AT_DAY = 9;
+    private final int TIME_FOR_OWL = 23;
+    private final int TIME_FOR_LARK = 22;
+    private final int TIME_FOR_WAKE_UP_LARK = 7;
+
 
 
     @Override
@@ -35,14 +41,20 @@ public class ClassificationOfUser implements Function<List<SleepingSession>, Use
             int larkCount = lark.size();
             int pigeonCount = pigeon.size();
 
+            if (owlCount == 0 && larkCount == 0 && pigeonCount == 0) {
+                return null; // не могу понять какое значение по умолчанию лучше поставить
+            }
+
             int max = Math.max(owlCount, Math.max(larkCount, pigeonCount));
-            if (max == owlCount) {
+            if (max == owlCount && owlCount > larkCount && owlCount > pigeonCount) {
                 System.out.println(owl.getFirst().getGetDescription());
                 return new Owl();
-            } else if (max == larkCount) {
+            } else if (max == larkCount && larkCount > owlCount && larkCount > pigeonCount) {
                 System.out.println(lark.getFirst().getGetDescription());
                 return new Lark();
-            } else {
+            }
+            else {
+                pigeon.add(new Pigeon());
                 System.out.println(pigeon.getFirst().getGetDescription());
                 return new Pigeon();
             }
@@ -53,14 +65,23 @@ public class ClassificationOfUser implements Function<List<SleepingSession>, Use
         LocalDateTime firstSessionTime = LocalDateTime.parse(firstSession, dateTimeFormatter);
         LocalDateTime secondSessionTime = LocalDateTime.parse(secondSession, dateTimeFormatter);
         long firstSessionHour = firstSessionTime.getHour();
+        long firstSessionMinute = firstSessionTime.getMinute();
+        long secondSessionMinute = secondSessionTime.getMinute();
         long secondSessionHour = secondSessionTime.getHour();
         if (firstSessionTime.getDayOfYear() == secondSessionTime.getDayOfYear()) {
-            if (firstSessionHour < 6 && secondSessionHour > 9) {
+            if (firstSessionHour < SLEEP_AT_NIGHT && secondSessionHour > WAKE_AT_DAY) {
                 owl.add(new Owl());
+                return apply(sleepingSessions.subList(1, sleepingSessions.size()));
             } else {
                 return apply(sleepingSessions.subList(1, sleepingSessions.size()));
             }
-        } else if (firstSessionHour < 22 && secondSessionHour < 7) {
+        }
+
+        if (((firstSessionHour == TIME_FOR_OWL && firstSessionMinute > 0)) &&
+                (secondSessionHour > WAKE_AT_DAY || (secondSessionHour == WAKE_AT_DAY && secondSessionMinute > 0))) {
+            owl.add(new Owl());
+        }
+        else if (firstSessionHour < TIME_FOR_LARK && secondSessionHour < TIME_FOR_WAKE_UP_LARK) {
             lark.add(new Lark());
         } else {
             pigeon.add(new Pigeon());
