@@ -17,6 +17,7 @@ public class SleepTrackerApp {
     public static void main(String[] args) {
 
         readFile("sleep_log.txt");
+
         functions.add(new CounterOfSessions());
         functions.add(new MinimumSession());
         functions.add(new MaximumSession());
@@ -24,6 +25,7 @@ public class SleepTrackerApp {
         functions.add(new CounterBadSessions());
         functions.add(new SleeplessNights());
         functions.add(new ClassificationOfUser());
+
         System.out.printf("Количество ваших сессий сна: %d%n", functions.getFirst().apply(sleepingSessions));
         System.out.printf("Минимальная сессия сна: %d минут%n", functions.get(1).apply(sleepingSessions));
         System.out.printf("Максимальная сессия сна: %d минут%n", functions.get(2).apply(sleepingSessions));
@@ -31,6 +33,7 @@ public class SleepTrackerApp {
         System.out.printf("Количество плохих сессий сна: %d%n", functions.get(4).apply(sleepingSessions));
         System.out.printf("Количество бессонных ночей: %d%n", functions.get(5).apply(sleepingSessions));
         System.out.print("Определение вашего хронотипа: ");
+
         functions.get(6).apply(sleepingSessions);
     }
 

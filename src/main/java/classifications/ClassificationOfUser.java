@@ -15,6 +15,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ClassificationOfUser implements Function<List<SleepingSession>, UserType> {
+
     private final List<Owl> owl = new ArrayList<>();
     private final List<Lark> lark = new ArrayList<>();
     private final List<Pigeon> pigeon = new ArrayList<>();
@@ -24,9 +25,7 @@ public class ClassificationOfUser implements Function<List<SleepingSession>, Use
     private final int timeForOwl = 23;
     private final int timeForLark = 22;
     private final int timeForWakeUpLark = 7;
-
-
-
+    
     @Override
     public UserType apply(List<SleepingSession> sleepingSessions) {
 

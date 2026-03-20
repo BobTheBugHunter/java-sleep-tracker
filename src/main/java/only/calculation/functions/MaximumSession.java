@@ -13,6 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class MaximumSession implements Function<List<SleepingSession>, Long> {
+
     private final List<Duration> durations = new ArrayList<>();
 
     @Override

@@ -9,6 +9,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class CounterBadSessions implements Function<List<SleepingSession>, Integer> {
+
     private final List<String> grades = new ArrayList<>();
 
     @Override
