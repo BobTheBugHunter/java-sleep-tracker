@@ -1,6 +1,7 @@
 package ru.yandex.practicum.sleeptracker;
 
 import Calculation.Functions.*;
+import Classifications.ClassificationOfUser;
 import com.sun.tools.javac.Main;
 
 import java.io.*;
@@ -22,12 +23,14 @@ public class SleepTrackerApp {
         functions.add(new AverageSession());
         functions.add(new CounterBadSessions());
         functions.add(new SleeplessNights());
+        functions.add(new ClassificationOfUser());
         System.out.println(functions.getFirst().apply(sleepingSessions));
         System.out.println(functions.get(1).apply(sleepingSessions));
         System.out.println(functions.get(2).apply(sleepingSessions));
         System.out.println(functions.get(3).apply(sleepingSessions));
         System.out.println(functions.get(4).apply(sleepingSessions));
         System.out.println(functions.get(5).apply(sleepingSessions));
+        System.out.println(functions.get(6).apply(sleepingSessions));
     }
 
     public static void readFile(String fileName) {
