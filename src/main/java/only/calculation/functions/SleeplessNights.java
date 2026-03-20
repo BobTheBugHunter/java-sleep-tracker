@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class SleeplessNights implements Function<List<SleepingSession>, Integer> {
 
     private final HashMap<LocalDateTime, LocalDateTime> sleeplessSessions = new HashMap<>();
-    private final int INTERVAL = 6;
+    private final int interval = 6;
 
     @Override
     public Integer apply(List<SleepingSession> sleepingSessions) {
@@ -33,7 +33,7 @@ public class SleeplessNights implements Function<List<SleepingSession>, Integer>
         LocalDateTime secondSessionTime = LocalDateTime.parse(secondSession, dateTimeFormatter);
         long hourOfFirstSession = firstSessionTime.getHour();
         if (firstSessionTime.getDayOfYear() == secondSessionTime.getDayOfYear()) {
-            if (hourOfFirstSession >= INTERVAL) {
+            if (hourOfFirstSession >= interval) {
                 sleeplessSessions.put(firstSessionTime, secondSessionTime);
                 //System.out.println("Бессонная ночь!" + firstSessionTime.toString() + "\n" + "время проснутия" + secondSessionTime.toString());
             }

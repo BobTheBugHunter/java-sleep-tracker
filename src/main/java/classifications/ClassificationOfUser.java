@@ -19,11 +19,11 @@ public class ClassificationOfUser implements Function<List<SleepingSession>, Use
     private final List<Lark> lark = new ArrayList<>();
     private final List<Pigeon> pigeon = new ArrayList<>();
 
-    private final int SLEEP_AT_NIGHT = 6;
-    private final int WAKE_AT_DAY = 9;
-    private final int TIME_FOR_OWL = 23;
-    private final int TIME_FOR_LARK = 22;
-    private final int TIME_FOR_WAKE_UP_LARK = 7;
+    private final int sleepAtNight = 6;
+    private final int wakeAtDay = 9;
+    private final int timeForOwl = 23;
+    private final int timeForLark = 22;
+    private final int timeForWakeUpLark = 7;
 
 
 
@@ -52,8 +52,7 @@ public class ClassificationOfUser implements Function<List<SleepingSession>, Use
             } else if (max == larkCount && larkCount > owlCount && larkCount > pigeonCount) {
                 System.out.println(lark.getFirst().getGetDescription());
                 return new Lark();
-            }
-            else {
+            } else {
                 pigeon.add(new Pigeon());
                 System.out.println(pigeon.getFirst().getGetDescription());
                 return new Pigeon();
@@ -69,7 +68,7 @@ public class ClassificationOfUser implements Function<List<SleepingSession>, Use
         long secondSessionMinute = secondSessionTime.getMinute();
         long secondSessionHour = secondSessionTime.getHour();
         if (firstSessionTime.getDayOfYear() == secondSessionTime.getDayOfYear()) {
-            if (firstSessionHour < SLEEP_AT_NIGHT && secondSessionHour > WAKE_AT_DAY) {
+            if (firstSessionHour < sleepAtNight && secondSessionHour > wakeAtDay) {
                 owl.add(new Owl());
                 return apply(sleepingSessions.subList(1, sleepingSessions.size()));
             } else {
@@ -77,11 +76,10 @@ public class ClassificationOfUser implements Function<List<SleepingSession>, Use
             }
         }
 
-        if (((firstSessionHour == TIME_FOR_OWL && firstSessionMinute > 0)) &&
-                (secondSessionHour > WAKE_AT_DAY || (secondSessionHour == WAKE_AT_DAY && secondSessionMinute > 0))) {
+        if (((firstSessionHour == timeForOwl && firstSessionMinute > 0)) &&
+                (secondSessionHour > wakeAtDay || (secondSessionHour == wakeAtDay && secondSessionMinute > 0))) {
             owl.add(new Owl());
-        }
-        else if (firstSessionHour < TIME_FOR_LARK && secondSessionHour < TIME_FOR_WAKE_UP_LARK) {
+        } else if (firstSessionHour < timeForLark && secondSessionHour < timeForWakeUpLark) {
             lark.add(new Lark());
         } else {
             pigeon.add(new Pigeon());

@@ -16,9 +16,14 @@ public class MinimumSession implements Function<List<SleepingSession>, Long> {
     public Long apply(List<SleepingSession> sleepingSessions) {
 
         if (sleepingSessions.isEmpty()) {
+            if (durations.isEmpty()) {
+                return -999L;
+            }
             Optional<Duration> minDuration = durations.stream().min(Duration::compareTo);
             return minDuration.get().toMinutes();
         }
+
+
 
         DateTimeFormatter dateTimeFormatter  = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
         List<String> s = sleepingSessions.stream()
