@@ -1,6 +1,6 @@
 package types.of.users;
 
-public class Lark extends UserType{
+public class Lark extends UserType {
 
     @Override
     public String getGetDescription() {
