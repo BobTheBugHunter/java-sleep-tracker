@@ -12,15 +12,16 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class MaximumSession implements Function<List<SleepingSession>, Integer> {
+public class MaximumSession implements Function<List<SleepingSession>, Long> {
     private final List<Duration> durations = new ArrayList<>();
+    private final int END_OF_SESSIONS = 2;
 
     @Override
-    public Integer apply(List<SleepingSession> sleepingSessions) {
+    public Long apply(List<SleepingSession> sleepingSessions) {
 
-        if (sleepingSessions.size() < 2) {
+        if (sleepingSessions.size() < END_OF_SESSIONS) {
             Optional<Duration> maxDuration = durations.stream().max(Duration::compareTo);
-            return (int) maxDuration.get().toMinutes();
+            return maxDuration.get().toMinutes();
         }
 
         DateTimeFormatter dateTimeFormatter  = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");

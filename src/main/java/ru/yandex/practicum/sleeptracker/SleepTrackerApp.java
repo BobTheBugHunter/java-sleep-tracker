@@ -21,11 +21,13 @@ public class SleepTrackerApp {
         functions.add(new MaximumSession());
         functions.add(new AverageSession());
         functions.add(new CounterBadSessions());
+        functions.add(new SleeplessNights());
         System.out.println(functions.getFirst().apply(sleepingSessions));
         System.out.println(functions.get(1).apply(sleepingSessions));
         System.out.println(functions.get(2).apply(sleepingSessions));
         System.out.println(functions.get(3).apply(sleepingSessions));
         System.out.println(functions.get(4).apply(sleepingSessions));
+        System.out.println(functions.get(5).apply(sleepingSessions));
     }
 
     public static void readFile(String fileName) {

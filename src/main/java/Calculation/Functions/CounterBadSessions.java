@@ -13,11 +13,12 @@ import java.util.stream.Collectors;
 
 public class CounterBadSessions implements Function<List<SleepingSession>, Integer> {
     private final List<String> grades = new ArrayList<>();
+    private final int END_OF_SESSIONS = 2;
 
     @Override
     public Integer apply(List<SleepingSession> sleepingSessions) {
 
-        if (sleepingSessions.size() < 2) {
+        if (sleepingSessions.size() < END_OF_SESSIONS) {
             return grades.size();
         }
 
